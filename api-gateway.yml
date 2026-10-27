@@ -1,10 +1,12 @@
+
 server:
   port: 8080
-
 
 spring:
   application:
     name: api-gateway
+  config:
+    import: "optional:configserver:http://localhost:8888"
   cloud:
     gateway:
       server:
@@ -26,23 +28,22 @@ spring:
               enabled: true
               lower-case-service-id: true
           routes:
-          - id: ms-dueno
-          uri: lb://ms-dueno
-          predicates:
-          - Path=/api/duenio/**
+            - id: ms-dueno
+              uri: lb://ms-dueno
+              predicates:
+                - Path=/api/duenio,/api/duenio/**
             - id: ms-mascota
               uri: lb://ms-mascota
               predicates:
-                - Path=/api/mascotas/**
+                - Path=/api/mascotas,/api/mascotas/**
             - id: ms-veterinario
               uri: lb://ms-veterinario
               predicates:
-                - Path=/api/veterinarios/**
+                - Path=/api/veterinarios,/api/veterinarios/**
             - id: ms-turno
               uri: lb://ms-turno
               predicates:
-                - Path=/api/turnos/**
-
+                - Path=/api/turnos,/api/turnos/**
 
 eureka:
   client:
