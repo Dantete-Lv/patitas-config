@@ -26,10 +26,10 @@ spring:
               enabled: true
               lower-case-service-id: true
           routes:
-            - id: ms-dueno
-              uri: lb://ms-dueno
-              predicates:
-                - Path=/api/duenos/**
+          - id: ms-dueno
+          uri: lb://ms-dueno
+          predicates:
+          - Path=/api/duenio/**
             - id: ms-mascota
               uri: lb://ms-mascota
               predicates:
