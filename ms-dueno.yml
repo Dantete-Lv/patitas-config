@@ -21,9 +21,12 @@ management:
   endpoint:
     health:
       show-details: always
+  info:
+    env:
+      enabled: true
 
 info:
   app:
     name: ms-dueno
     description: Microservicio de gestión de dueños
-    version: 1.0.0
+    version: 1.0.00
