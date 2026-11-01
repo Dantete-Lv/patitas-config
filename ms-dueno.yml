@@ -1,4 +1,3 @@
-
 server:
   port: 8081
 
@@ -14,7 +13,7 @@ spring:
       ddl-auto: update
     show-sql: true
 
-  management:
+management:
   endpoints:
     web:
       exposure:
