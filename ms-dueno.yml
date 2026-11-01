@@ -13,3 +13,18 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+  management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+info:
+  app:
+    name: ms-dueno
+    description: Microservicio de gestión de dueños
+    version: 1.0.0
