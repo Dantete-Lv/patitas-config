@@ -1,4 +1,4 @@
-
+```yaml
 server:
   port: 8084
 
@@ -55,7 +55,7 @@ resilience4j:
         maxAttempts: 3
         waitDuration: 1s
 
-  management:
+management:
   endpoints:
     web:
       exposure:
@@ -66,3 +66,4 @@ resilience4j:
   health:
     circuitbreakers:
       enabled: true
+```
