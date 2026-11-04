@@ -1,4 +1,4 @@
-```yaml
+yaml
 server:
   port: 8084
 
