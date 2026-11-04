@@ -54,3 +54,15 @@ resilience4j:
       veterinarioService:
         maxAttempts: 3
         waitDuration: 1s
+
+  management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,circuitbreakers,circuitbreakerevents
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
