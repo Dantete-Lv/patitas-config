@@ -1,12 +1,18 @@
-
 server:
   port: 8080
 
 spring:
   application:
     name: api-gateway
+
   config:
     import: "optional:configserver:http://localhost:8888"
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
   cloud:
     gateway:
       server:
@@ -23,27 +29,39 @@ spring:
                   - OPTIONS
                 allowedHeaders: "*"
                 allowCredentials: false
+
           discovery:
             locator:
               enabled: true
               lower-case-service-id: true
+
           routes:
             - id: ms-dueno
               uri: lb://ms-dueno
               predicates:
                 - Path=/api/duenio,/api/duenio/**
+
             - id: ms-mascota
               uri: lb://ms-mascota
               predicates:
                 - Path=/api/mascotas,/api/mascotas/**
+
             - id: ms-veterinario
               uri: lb://ms-veterinario
               predicates:
                 - Path=/api/veterinarios,/api/veterinarios/**
+
             - id: ms-turno
               uri: lb://ms-turno
               predicates:
                 - Path=/api/turnos,/api/turnos/**
+              filters:
+                - name: RequestRateLimiter
+                  args:
+                    redis-rate-limiter.replenishRate: 10
+                    redis-rate-limiter.burstCapacity: 20
+                    redis-rate-limiter.requestedTokens: 1
+                    key-resolver: "#{@ipKeyResolver}"
 
 eureka:
   client:
