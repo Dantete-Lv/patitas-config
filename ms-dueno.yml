@@ -17,7 +17,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics
+        include: health,info,metrics,env,beans,mappings
   endpoint:
     health:
       show-details: always
@@ -29,4 +29,4 @@ info:
   app:
     name: ms-dueno
     description: Microservicio de gestión de dueños
-    version: 1.0.00
+    version: 1.0.0
