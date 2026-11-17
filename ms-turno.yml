@@ -14,6 +14,11 @@ spring:
     show-sql: true
 
 spring.cloud.openfeign:
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
   client:
     config:
       default:
@@ -67,3 +72,6 @@ management:
   health:
     circuitbreakers:
       enabled: true
+logging:
+  level:
+    com.patitas.turno.adapter.out.feign: DEBUG
