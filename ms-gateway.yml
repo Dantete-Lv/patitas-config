@@ -1,0 +1,41 @@
+
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          routes:
+            - id: ms-auth
+              uri: lb://ms-auth
+              predicates:
+                - Path=/auth/**
+
+            - id: ms-dueno
+              uri: lb://ms-dueno
+              predicates:
+                - Path=/api/duenos/**
+
+            - id: ms-mascota
+              uri: lb://ms-mascota
+              predicates:
+                - Path=/api/mascotas/**
+
+            - id: ms-veterinario
+              uri: lb://ms-veterinario
+              predicates:
+                - Path=/api/veterinarios/**
+
+            - id: ms-turno
+              uri: lb://ms-turno
+              predicates:
+                - Path=/api/turnos/**
+
+jwt:
+  secret: ${JWT_SECRET:patitas-felices-clave-secreta-jwt-256-bits-minimo-cambiar}
