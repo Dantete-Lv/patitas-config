@@ -39,7 +39,7 @@ spring:
             - id: ms-dueno
               uri: lb://ms-dueno
               predicates:
-                - Path=/api/duenio,/api/duenio/**
+                - Path=/api/duenos,/api/duenos/**
 
             - id: ms-mascota
               uri: lb://ms-mascota
